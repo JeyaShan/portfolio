@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    min-height: 100vh;
+    
+    /* The Background Image + Gradient */
+    background: linear-gradient(rgba(81, 43, 212, 0.7), rgba(0, 0, 0, 0.8)), 
+                url('../assets/dotnet-bg.png');
+    
+    /* FIXES START HERE */
+    background-repeat: no-repeat;  /* Prevents the image from tiling */
+    background-size: contain;       /* Stretches the image to fill the screen */
+    background-position: center;  /* Keeps the image centered */
+    background-attachment: fixed; /* Keeps it from scrolling (which you already had!) */
+}
