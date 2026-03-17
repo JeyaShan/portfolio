@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <title>My Portfolio</title>
+    <title>Portfolio</title>
 </head>
 
 <body>
 
-<h1>Hello, I am Jeyashankar</h1>
+<div class="loader" id="loader">
+  <img src="assets/dotnet-bg.png" alt="VS Logo">
+</div>
 
-<p>I am a Full Stack Developer ...</p>
+<!-- Main Content -->
+<div class="main" id="main">
+<div class="left">
+  <div class="image-box">
+    <img src="assets/profile-image.png" alt="Profile image">
+  </div>
+</div>
 
-<p>Skills:</p>
-
-<ul>
-<li>.NET Core</li>
-<li>Blazor</li>
-<li>Angular</li>
-<li>Web API</li>
-</ul>
-
+<div class="right">
+    <h1 id="t1"></h1>
+    <h2 id="t2"></h2>
+    <p id="t3"></p>
+  </div>
+</div>
+<script src="javascript/home.js"></script>
 </body>
 
 </html>
