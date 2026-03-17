@@ -5,13 +5,37 @@ import { loadAbout } from './about.js';
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').style.display = 'none';
-
-    loadHome();        // 👉 load home AFTER loader
-    initBlastAbout();        // 👉 then attach logic
+    //handleRoute();
   }, 2000);
 });
 
+// 🔁 handle route change
+function handleRoute() {
+  const hash = window.location.hash;
+  clearBlast();
+  if (hash === '#about') {
+    loadAbout();
+  } else {
+    loadHome();
+    initBlastAbout();
+  }
+}
+
+window.addEventListener('hashchange', () => {
+  handleRoute();
+  console.log('HASH CHANGE FIRED');
+});
+
+window.addEventListener('pageshow', () => {
+  handleRoute();
+  console.log('PAGESHOW FIRED');
+});
+
 const btn = document.getElementById('aboutBtn');
+
+function clearBlast() {
+  document.querySelectorAll('.blast-letter').forEach(el => el.remove());
+}
 
 function initBlastAbout() {
  const btn = document.getElementById('aboutBtn');
@@ -69,7 +93,8 @@ function aboutBlast(btn) {
     } else {
       // when center animation ends → load about
       span.addEventListener('animationend', () => {
-        loadAbout(); 
+        window.location.hash = 'about';
+        handleRoute();
         span.remove();
       });
     }
