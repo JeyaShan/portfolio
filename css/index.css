@@ -32,6 +32,29 @@
   .caret { display: inline-block; width: 10px; height: 1em; vertical-align: -2px; background: #fff; margin-left: 4px; animation: blink 1s infinite; }
   @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
 
+ .about-btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+
+/* Show after typing */
+.about-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
   /* Main Layout */
   .main {
     display: none;
@@ -117,3 +140,49 @@
     .main { flex-direction: column; }
     .right { padding: 30px; }
   }
+
+
+ /* base letter */
+.blast-letter {
+  position: fixed;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* 💥 explosion */
+.blast-letter:not(.to-center) {
+  animation: explode 800ms forwards ease-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* 🎯 center animation */
+.to-center {
+  animation: moveToCenter 700ms ease forwards;
+}
+
+@keyframes moveToCenter {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: 
+      translate(
+        calc(50vw - var(--start-x)), 
+        calc(50vh - var(--start-y))
+      )
+      scale(2.5);
+    opacity: 1;
+  }
+}
